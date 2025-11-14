@@ -32,6 +32,7 @@
 
 import subprocess
 import uuid
+from enum import Enum
 
 QUALITY_MAP = {
     "Low": "/screen",
@@ -39,6 +40,14 @@ QUALITY_MAP = {
     "High": "/printer",
     "Very High": "/prepress"
 }
+
+
+class CompressionQuality(str, Enum):
+    low = "Low"
+    medium = "Medium"
+    high = "High"
+    very_high = "Very High"
+
 
 async def compress_pdf(upload_file, quality):
     quality_setting = QUALITY_MAP[quality.value]
